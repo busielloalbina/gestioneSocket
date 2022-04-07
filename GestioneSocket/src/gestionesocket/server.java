@@ -10,10 +10,8 @@ import java.io.IOException;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import static java.time.Clock.system;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import sun.util.logging.PlatformLogger;
 
 
 /**
@@ -24,12 +22,16 @@ public class server {
     public static void main(String[] args) {
         try {
             //apertura alla porta, avvio del servizio
+            //server in ascolto
             ServerSocket serverSocket = new ServerSocket(2000); 
             System.out.println("Server avviato correttamente");
             //attesa di richiesta del server
             Socket socket = serverSocket.accept();
+            
              System.out.println("connessione avvenuta");
-             system.out.println("Socket: " + socket);
+             
+             System.out.println("Socket: " + socket);
+             
         } catch(BindException ex) {
             System.err.println("porta occupata");
             
@@ -39,6 +41,8 @@ public class server {
             System.err.println("errore avvio server sulla porta 2000");
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
     }
     
 }
